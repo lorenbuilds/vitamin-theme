@@ -1,0 +1,200 @@
+<section class="top-header">
+  <div class="announcement">
+    {{ section.settings.announcement_text }}
+  </div>
+  <div class="right-section">
+    {%- if shop.customer_accounts_enabled -%}
+      <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="auth-link">
+        {%- if customer -%}
+          {{ 'customer.account_fallback' | t }}
+        {%- else -%}
+          {{ section.settings.signin_text | default: 'Sign In / Register' }}
+        {%- endif -%}
+      </a>
+      <div class="divider"></div>
+    {%- endif -%}
+    
+    {%- form 'currency' -%}
+      <div class="currency-selector">
+        <svg class="flag-icon" width="24" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="24" height="16" fill="#F5F5F5"/>
+          <rect width="24" height="1.23077" fill="#D02F44"/>
+          <rect y="2.46154" width="24" height="1.23077" fill="#D02F44"/>
+          <rect y="4.92308" width="24" height="1.23077" fill="#D02F44"/>
+          <rect y="7.38461" width="24" height="1.23077" fill="#D02F44"/>
+          <rect y="9.84615" width="24" height="1.23077" fill="#D02F44"/>
+          <rect y="12.3077" width="24" height="1.23077" fill="#D02F44"/>
+          <rect y="14.7692" width="24" height="1.23077" fill="#D02F44"/>
+          <rect width="12" height="8.61538" fill="#46467F"/>
+          <g filter="url(#filter0_d_0_1)">
+            <path d="M2.4 2.15385L2.7 2.76923L3.3 2.46154L3 3.07692L3.6 3.38462L2.9 3.38462L2.9 4L2.4 3.69231L1.9 4V3.38462L1.2 3.38462L1.8 3.07692L1.5 2.46154L2.1 2.76923L2.4 2.15385Z" fill="white"/>
+            <path d="M5.4 2.15385L5.7 2.76923L6.3 2.46154L6 3.07692L6.6 3.38462L5.9 3.38462L5.9 4L5.4 3.69231L4.9 4V3.38462L4.2 3.38462L4.8 3.07692L4.5 2.46154L5.1 2.76923L5.4 2.15385Z" fill="white"/>
+            <path d="M8.4 2.15385L8.7 2.76923L9.3 2.46154L9 3.07692L9.6 3.38462L8.9 3.38462L8.9 4L8.4 3.69231L7.9 4V3.38462L7.2 3.38462L7.8 3.07692L7.5 2.46154L8.1 2.76923L8.4 2.15385Z" fill="white"/>
+            <path d="M11.4 2.15385L11.7 2.76923L12.3 2.46154L12 3.07692L12.6 3.38462L11.9 3.38462L11.9 4L11.4 3.69231L10.9 4V3.38462L10.2 3.38462L10.8 3.07692L10.5 2.46154L11.1 2.76923L11.4 2.15385Z" fill="white"/>
+            <path d="M3.9 4.30769L4.2 4.92308L4.8 4.61538L4.5 5.23077L5.1 5.53846L4.4 5.53846L4.4 6.15385L3.9 5.84615L3.4 6.15385V5.53846L2.7 5.53846L3.3 5.23077L3 4.61538L3.6 4.92308L3.9 4.30769Z" fill="white"/>
+            <path d="M6.9 4.30769L7.2 4.92308L7.8 4.61538L7.5 5.23077L8.1 5.53846L7.4 5.53846L7.4 6.15385L6.9 5.84615L6.4 6.15385V5.53846L5.7 5.53846L6.3 5.23077L6 4.61538L6.6 4.92308L6.9 4.30769Z" fill="white"/>
+            <path d="M9.9 4.30769L10.2 4.92308L10.8 4.61538L10.5 5.23077L11.1 5.53846L10.4 5.53846L10.4 6.15385L9.9 5.84615L9.4 6.15385V5.53846L8.7 5.53846L9.3 5.23077L9 4.61538L9.6 4.92308L9.9 4.30769Z" fill="white"/>
+            <path d="M2.4 6.46154L2.7 7.07692L3.3 6.76923L3 7.38461L3.6 7.69231L2.9 7.69231L2.9 8.30769L2.4 8L1.9 8.30769V7.69231L1.2 7.69231L1.8 7.38461L1.5 6.76923L2.1 7.07692L2.4 6.46154Z" fill="white"/>
+            <path d="M5.4 6.46154L5.7 7.07692L6.3 6.76923L6 7.38461L6.6 7.69231L5.9 7.69231L5.9 8.30769L5.4 8L4.9 8.30769V7.69231L4.2 7.69231L4.8 7.38461L4.5 6.76923L5.1 7.07692L5.4 6.46154Z" fill="white"/>
+            <path d="M8.4 6.46154L8.7 7.07692L9.3 6.76923L9 7.38461L9.6 7.69231L8.9 7.69231L8.9 8.30769L8.4 8L7.9 8.30769V7.69231L7.2 7.69231L7.8 7.38461L7.5 6.76923L8.1 7.07692L8.4 6.46154Z" fill="white"/>
+            <path d="M11.4 6.46154L11.7 7.07692L12.3 6.76923L12 7.38461L12.6 7.69231L11.9 7.69231L11.9 8.30769L11.4 8L10.9 8.30769V7.69231L10.2 7.69231L10.8 7.38461L10.5 6.76923L11.1 7.07692L11.4 6.46154Z" fill="white"/>
+          </g>
+          <defs>
+            <filter id="filter0_d_0_1" x="1.2" y="2.15385" width="11.4" height="6.15385" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+              <feOffset/>
+              <feComposite in2="hardAlpha" operator="out"/>
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/>
+              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
+            </filter>
+          </defs>
+        </svg>
+        <span class="currency-text">USD</span>
+        <svg class="chevron-down" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    {%- endform -%}
+  </div>
+</section>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .top-header {
+    width: 100%;
+    height: 50px;
+    background-color: {{ section.settings.background_color | color_to_rgb }};
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 120px;
+    position: relative;
+    overflow-x: hidden;
+    margin-top: 0; 
+  }
+
+  .announcement {
+    color: {{ section.settings.text_color | color_to_rgb }};
+    font-family: 'Jost', sans-serif;
+    font-size: 16px;
+    letter-spacing: -0.4px;
+  }
+
+  .right-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .auth-link {
+    color: {{ section.settings.text_color | color_to_rgb }};
+    font-family: 'Jost', sans-serif;
+    font-size: 16px;
+    text-decoration: none;
+    letter-spacing: -0.4px;
+  }
+
+  .divider {
+    width: 1px;
+    height: 27px;
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .currency-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: {{ section.settings.text_color | color_to_rgb }};
+  }
+
+  .flag-icon {
+    width: 24px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  .currency-text {
+    font-family: 'Jost', sans-serif;
+    font-size: 16px;
+    letter-spacing: -0.4px;
+  }
+
+  .chevron-down {
+    width: 12px;
+    height: 8px;
+  }
+
+  @media (max-width: 1024px) {
+    .top-header {
+      padding: 0 16px;
+    }
+
+    .announcement {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .top-header {
+      padding: 0 12px;
+    }
+    
+    .announcement {
+      display: none;
+    }
+
+    .top-header {
+      justify-content: flex-end;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Announcement Text",
+      "default": "Afterpay, Laybuy & Genoapay | Free Delivery New Zealand + Australia*"
+    },
+    {
+      "type": "text",
+      "id": "signin_text",
+      "label": "Sign In Text",
+      "default": "Sign In / Register"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#F66239"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement Bar",
+      "category": "Header"
+    }
+  ]
+}
+{% endschema %}
