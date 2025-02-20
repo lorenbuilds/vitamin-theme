@@ -1,0 +1,3 @@
+[environments]
+[environments.development]
+store = "vitamin-store-tutorial.myshopify.com"
